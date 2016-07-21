@@ -53,5 +53,22 @@ module ActiveRecord
         true
       end
     end
+
+    # Creates a record with values matching those of the instance attributes
+    # and returns its id.
+    def _create_record(attribute_names = self.attribute_names)
+      attributes_values = arel_attributes_with_values_for_create(attribute_names)
+
+      new_id = self.class.unscoped.insert attributes_values
+      self.id ||= new_id if self.class.primary_key
+
+      # CPK
+      if self.class.primary_key && self.id.is_a?(Array) && new_id.is_a?(Array)
+        self.id = self.id.map.with_index{|x,i| x or new_id[i]}
+      end
+
+      @new_record = false
+      id
+    end
   end
 end
