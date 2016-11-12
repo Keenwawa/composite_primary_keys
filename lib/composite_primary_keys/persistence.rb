@@ -56,7 +56,7 @@ module ActiveRecord
 
     # Creates a record with values matching those of the instance attributes
     # and returns its id.
-    def _create_record(attribute_names = @attributes.keys)
+    def _create_record(attribute_names = self.attribute_names)
       attributes_values = arel_attributes_with_values_for_create(attribute_names)
 
       new_id = self.class.unscoped.insert attributes_values
