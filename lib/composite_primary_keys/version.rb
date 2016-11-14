@@ -3,6 +3,7 @@ module CompositePrimaryKeys
     MAJOR = 8
     MINOR = 1
     TINY  = 4
-    STRING = [MAJOR, MINOR, TINY].join('.')
+    PRE = 'kereyroper1'
+    STRING = [MAJOR, MINOR, TINY, PRE].join('.')
   end
 end
