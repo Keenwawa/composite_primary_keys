@@ -3,6 +3,7 @@ module CompositePrimaryKeys
     MAJOR = 9
     MINOR = 0
     TINY  = 4
-    STRING = [MAJOR, MINOR, TINY].join('.')
+    PRE   = 'kerey1'
+    STRING = [MAJOR, MINOR, TINY, PRE].join('.')
   end
 end
